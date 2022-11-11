@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <HeaderAvengerVue />
+    <ButtonsAvengersVue :avenger="avenger" @handle-set-avenger="handleSetAvenger"/>
+    <MainAvengerVue :avenger="avenger"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderAvengerVue from './components/HeaderAvenger.vue';
+import ButtonsAvengersVue from './components/ButtonsAvengers.vue';
+import MainAvengerVue from './components/MainAvenger.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderAvengerVue,
+    ButtonsAvengersVue,
+    MainAvengerVue,
+  },
+  data() {
+    return {
+      avenger: 'Hulk',
+    }
+  },
+  methods: {
+    handleSetAvenger: function(name) {
+        this.avenger = name
+        console.log(this.avenger)
+      }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #101010;
 }
 </style>
